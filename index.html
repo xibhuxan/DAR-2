@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Examples</title>
+    <!-- React and ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for JSX -->
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #e0e0e0;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="root" class="container"></div>
+    <script type="text/babel">
+        // Componente Header
+        const Header = () => {
+            return (
+                <header>
+                    <h1>Ejemplo con React</h1>
+                    <p>Unos pequeños ejemplos utilizando el Framework de React</p>
+                </header>
+            );
+        };
+
+        // Componente ItemList
+        const ItemList = () => {
+            const items = ['React', 'JavaScript', 'HTML', 'CSS'];
+            return (
+                <div>
+                    <h2>Item List</h2>
+                    <ul>
+                        {items.map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        };
+
+        // Componente Counter
+        const Counter = () => {
+            const [count, setCount] = React.useState(0);
+
+            const increment = () => setCount(count + 1);
+            const decrement = () => setCount(count - 1);
+
+            return (
+                <div>
+                    <h2>Counter</h2>
+                    <p>Current Count: {count}</p>
+                    <button onClick={increment}>Increment</button>
+                    <button onClick={decrement} style={{ marginLeft: '10px' }}>Decrement</button>
+                </div>
+            );
+        };
+
+        // Componente principal App
+        const App = () => {
+            return (
+                <div>
+                    <Header />
+                    <ItemList />
+                    <Counter />
+                </div>
+            );
+        };
+
+        // Renderizando el componente App en el elemento con id "root"
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
